@@ -1,4 +1,5 @@
 const popUpBody = document.getElementById("popUpBody");
+const displayResult = document.createElement("p");
 
 let question = "What is the answer?";
 let answers = ["Answer 1", "Answer 2", "Answer 3", "Answer 4"];
@@ -40,14 +41,29 @@ function displayQuizPage(){
     getResult.setAttribute("onclick", "checkAnswer()");
     getResult.innerHTML="CHECK"
     popUpBody.appendChild(getResult);
+
+    //and somewhere for the result
+    popUpBody.appendChild(displayResult);
 }
 
 function checkAnswer(){
-    const theseAnswers = document.querySelectorAll(".answer");
-    console.log(theseAnswers);
     let thisIndex = 0;
-   for (let thisAnswer of theseAnswers){
-    if (thisAnswer.checked) if(thisIndex == quizPage.correctAnswer) console.log("CORRECT");
+    let correctAnswer = false;
+
+    //retrieve the answers
+    const theseAnswers = document.querySelectorAll(".answer");
+      
+    //iterate through answers to mark results
+    for (let thisAnswer of theseAnswers){
+    if (thisAnswer.checked) {
+            if((thisIndex + 1) == quizPage.correctAnswer) correctAnswer = true;
+            else correctAnswer = false;
+        }
     thisIndex++;
    }
+   
+   let thisResult = "Sorry, You were incorect!"
+   if (correctAnswer) thisResult = "Congratulations, that's correct!";
+   displayResult.innerHTML = thisResult;
+   
 }
