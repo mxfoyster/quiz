@@ -14,36 +14,40 @@ displayQuizPage();
 
 function displayQuizPage(){    
     //create and display the question
+    const pageContainer = document.createElement("div");
+    pageContainer.classList.add("pageContainer");
+    popUpBody.appendChild(pageContainer);
     const thisQuestion = document.createElement("p");
     thisQuestion.innerHTML = quizPage.question;
-    popUpBody.appendChild(thisQuestion);
+    pageContainer.appendChild(thisQuestion);
     
     for (count = 0; count < quizPage.answers.length; count++){
-        //create the label
-        const thisCheckBoxLabel = document.createElement("label")
-        thisCheckBoxLabel.setAttribute("for", "Q" + count);
-        thisCheckBoxLabel.innerHTML = quizPage.answers[count];
-        popUpBody.appendChild(thisCheckBoxLabel);
-
         //create the checkbox
         const thisCheckBox = document.createElement("input");
         thisCheckBox.setAttribute("type", "checkbox");
         thisCheckBox.setAttribute("name", "Q" + count);
-        thisCheckBox.setAttribute("class", "answer");
-        popUpBody.appendChild(thisCheckBox);
+        thisCheckBox.classList.add("answer");
+        pageContainer.appendChild(thisCheckBox);
+
+        //create the label
+        const thisCheckBoxLabel = document.createElement("label")
+        thisCheckBoxLabel.setAttribute("for", "Q" + count);
+        thisCheckBoxLabel.classList.add("answerLabel");
+        thisCheckBoxLabel.innerHTML = quizPage.answers[count];
+        pageContainer.appendChild(thisCheckBoxLabel);
 
         //just for now, we'll add a line break
         const newLine = document.createElement("br")
-        popUpBody.appendChild(newLine);    
+        pageContainer.appendChild(newLine);    
     }
     //add the check answer button
     const getResult = document.createElement("button");
     getResult.setAttribute("onclick", "checkAnswer()");
     getResult.innerHTML="CHECK"
-    popUpBody.appendChild(getResult);
+    pageContainer.appendChild(getResult);
 
     //and somewhere for the result
-    popUpBody.appendChild(displayResult);
+    pageContainer.appendChild(displayResult);
 }
 
 function checkAnswer(){

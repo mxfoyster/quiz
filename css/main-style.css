@@ -1,0 +1,19 @@
+.answerLabel{
+ color:blue;
+ margin-left: 1rem;
+}
+
+.answer{
+    margin-bottom: 1rem;
+}
+
+.pageContainer{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 6px;
+    background-color: bisque;
+    display: inline-block;
+    padding: 1rem;
+    transform: translate(-50%, -50%);
+}
