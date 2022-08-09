@@ -1,11 +1,16 @@
 const popUpBody = document.getElementById("popUpBody");
 
+let question = "What is the answer?";
 let answers = ["Answer 1", "Answer 2", "Answer 3"];
 
 displayQuizPage();
 
 
 function displayQuizPage(){    
+    const thisQuestion = document.createElement("p");
+    thisQuestion.innerHTML = question;
+    popUpBody.appendChild(thisQuestion);
+    
     for (count = 0; count < answers.length; count++){
         
         //create the label
