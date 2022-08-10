@@ -1,0 +1,10 @@
+{
+    "question": "Which item of clothing is best for watersports",
+    "answers":[
+        "Jeans",
+        "Cotton T-Shirt",
+        "Polyester Shorts",
+        "Cotton Fleece"
+    ],
+    "correctAnswer": "3"
+}

@@ -9,7 +9,7 @@ let quizPage = {
 
 }
 
-displayQuizPage();
+loadQuiz();
 
 
 function displayQuizPage(){    
@@ -70,4 +70,17 @@ function checkAnswer(){
    if (correctAnswer) thisResult = "Congratulations, that's correct!";
    displayResult.innerHTML = thisResult;
    
+}
+
+function loadQuiz(){
+    fetch('data/quiz.json')
+    .then(response => response.json())
+    .then(data => { 
+        quizPage.question = data.question;
+        quizPage.answers = data.answers;
+        quizPage.correctAnswer = data.correctAnswer;
+
+        console.log(quizPage);
+        displayQuizPage();
+    });
 }
